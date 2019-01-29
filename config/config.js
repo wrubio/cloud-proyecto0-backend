@@ -1,0 +1,1 @@
+module.exports.SEED = "%proyect0-db%@users$";
