@@ -45,6 +45,6 @@ app.use('/event', eventRoute);
 app.use('/', appRoute);
 
 // Listen requires
-app.listen(8020, '0.0.0.0', () => {
+app.listen(8080, '0.0.0.0', () => {
     console.log(' Server Node/Express is listening in port: \x1b[36m%s\x1b[0m', '8020');
 });
