@@ -2,9 +2,14 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var http = require('http');
+var path = require('path');
 
 // init variables
 var app = express();
+
+app.use(express.static(__dirname + '/dist'));
+app.get('/*', (req, res) => res.sendfile(path.join(__dirname)));
 
 // Enable Cors
 app.use(function(req, res, next) {
@@ -40,6 +45,6 @@ app.use('/event', eventRoute);
 app.use('/', appRoute);
 
 // Listen requires
-app.listen(3000, () => {
-    console.log(' Server Node/Express is listening in port: \x1b[36m%s\x1b[0m', '3000');
+app.listen(8020, '0.0.0.0', () => {
+    console.log(' Server Node/Express is listening in port: \x1b[36m%s\x1b[0m', '8020');
 });

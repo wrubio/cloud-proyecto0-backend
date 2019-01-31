@@ -77,6 +77,7 @@ app.post('/', mdAuth.verifyToken, (req, res) => {
         // Create the new user
         var event = new Event({
             name: body.name,
+            created: new Date(),
             description: body.description,
             startDate: new Date(body.startDate),
             endDate: new Date(body.endDate),
@@ -157,11 +158,15 @@ app.put('/:id', mdAuth.verifyToken, (req, res) => {
 
             // Assign new user data to the found user
             event.name = body.name;
+            event.created = new Date();
             event.description = body.description;
             event.startDate = new Date(body.startDate);
             event.endDate = new Date(body.endDate);
             // event.img = body.img;
-            event.user = body.user;
+            // event.user = body.user;
+            event.user = req.dUser._id;
+
+            console.log(body);
 
             // Update user data
             event.save((err, saveEvent) => {
